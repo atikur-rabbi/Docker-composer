@@ -1,0 +1,26 @@
+version: '3.1'
+
+services:
+
+  nginx:
+    image: nginx
+    ports:
+    - 80:80
+    - 443:443
+    volumes:
+    - nginx:/etc/nginx
+
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: exampledb
+      MYSQL_USER: exampleuser
+      MYSQL_PASSWORD: examplepass
+      MYSQL_RANDOM_ROOT_PASSWORD: '1'
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  nginx:
+  db:
