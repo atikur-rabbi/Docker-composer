@@ -20,7 +20,7 @@ install php-mysql
 
 for vertualmin
 
-docker run --name=hosting \
+sudo docker run-p 10000:10000 --name=hosting \
 -v hosting-etc:/etc \
 -v hosting-home:/home \
 -v hosting-lib:/var/lib \
