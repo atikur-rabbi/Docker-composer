@@ -1,0 +1,12 @@
+docker run -p 80:80 -P -d --name nginx nginx
+docker run --rm -d -p 4040:4040 --link nginx --name www_ngrok wernight/ngrok ngrok http nginx:80
+
+server container nginx port 80
+
+curl $(docker port nginx 80)
+curl $(docker port www_ngrok 4040)/api/tunnels
+
+
+docker run --rm -d -p 4041:4040 --link nextcloud --name www_nextcloud wernight/ngrok ngrok http nextcloud:80
+
+curl $(docker port www_nextcloud 4041)/api/tunnels

@@ -1,0 +1,18 @@
+/path/to/nextcloud/data
+
+http://127.0.0.4/
+
+id:
+554216cac2bb 
+
+docker exec -it 554216cac2bb /bin/bash
+
+cd config
+
+apt-get update
+apt-get install nano
+
+add domain
+
+
+

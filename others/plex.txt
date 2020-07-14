@@ -1,0 +1,34 @@
+docker run -d \
+    --volume /path/to/programdata:/config \ 
+    --volume /path/to/share1:/mnt/share1 \ 
+    --volume /path/to/share2:/mnt/share2 \ 
+    --device /dev/dri:/dev/dri \ 
+    --runtime=nvidia \ 
+    --publish 8096:8096 \ 
+    --publish 8920:8920 \ 
+    --env UID=1000 \ 
+    --env GID=100 \ 
+    --env GIDLIST=100 \ 
+    emby/embyserver:latest
+
+
+-p 10000:10000    
+
+http 8096
+https 8920
+
+docker run -p 8096:8096  emby/embyserver:latest
+
+docker create \
+  --name=plex \
+  --net=host \
+  -e PUID=1000 \
+  -e PGID=1000 \
+  -e VERSION=docker \
+  -e UMASK_SET=022 `#optional` \
+  -e PLEX_CLAIM= `#optional` \
+  -v /path/to/library:/config \
+  -v /path/to/tvseries:/tv \
+  -v /path/to/movies:/movies \
+  --restart unless-stopped \
+  linuxserver/plex
