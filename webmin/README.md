@@ -9,7 +9,7 @@ sudo docker run -d -p 10000:10000 --name webmin jgrojasx/webmin
 
 sudo docker stop webmin
 sudo docker rm webmin
-sudo docker run -d -p 10000:10000 --name webmin jgrojasx/webmin
+sudo docker run -d -p 10000:10000 --restart unless-stopped --name webmin jgrojasx/webmin
 
 username: root
 password: admin
